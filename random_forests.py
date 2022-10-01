@@ -54,10 +54,11 @@ class random_Forest_Classifier():
 
     # Bootstrapping to build randomised dataset for tree construction
     def draw_bootstrap(self, X_train, y_train):
-        bootstrap_indices = list(np.random.choice(range(len(X_train)), len(X_train), replace = True))
-        oob_indices = [i for i in range(len(X_train)) if i not in bootstrap_indices]
-        X_bootstrap = X_train[bootstrap_indices]
-        y_bootstrap = y_train[bootstrap_indices]
+        bootstrap_idxs = list(np.random.choice(range(len(X_train)), len(X_train), replace = True))
+        oob_indices = [i for i in range(len(X_train)) if i not in bootstrap_idxs]
+        X_bootstrap = X_train[bootstrap_idxs]
+        y_bootstrap = y_train[bootstrap_idxs]
+
         X_oob = X_train[oob_indices]
         y_oob = y_train[oob_indices]
         return X_bootstrap, y_bootstrap, X_oob, y_oob
